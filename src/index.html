@@ -2,9 +2,462 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Pink</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.js"></script>
+    <script src="js/vendor/flexibility.js"></script>
+    <![endif]-->
+
 </head>
 <body>
+
+
+<!--<header class="page-header page-header&#45;&#45;page-menu-opened">-->
+<header class="page-header">
+    <div class="page-header__container">
+        <div class="page-header__wrapper">
+
+            <a class="page-header__logo" href="#">
+                <picture>
+                    <source media="(min-width: 1200px)" srcset="img/Pink-logo-3@1x.png, img/Pink-logo-3@2x.png 2x">
+                    <source media="(min-width: 700px)" srcset="img/Pink-logo-2@1x.png, img/Pink-logo-2@2x.png 2x">
+                    <img class="page-header__logo-img" src="img/Pink-logo-1.png" alt="Pink">
+                </picture>
+            </a>
+
+            <div class="page-menu__burger-wrapper" role="button">
+                <div class="page-menu__burger"></div>
+            </div>
+
+            <nav class="page-menu" role="navigation" data-gumshoe-header>
+                <ul class="page-menu__list" data-gumshoe>
+                    <li class="page-menu__item">
+                        <a class="page-menu__link" data-scroll href="#info" >Информация</a>
+                    </li>
+
+                    <li class="page-menu__item">
+                        <a class="page-menu__link" data-scroll href="#features">Возможности</a>
+                    </li>
+
+                    <li class="page-menu__item">
+                        <a class="page-menu__link" data-scroll href="#reviews">Отзывы</a>
+                    </li>
+
+                    <li class="page-menu__item">
+                        <a class="page-menu__link" data-scroll href="#price">Стоимость</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+    </div>
+</header>
+
+
+<main class="page-main" id="info">
+
+    <div class="page-main__wrapper">
+
+        <section class="intro" id="intro">
+
+            <div class="intro__wrapper">
+                <h1 class="intro__title">Взгляните на жизнь иначе!</h1>
+
+                <picture>
+                    <source media="(min-width: 1200px)" srcset="img/iphone-hand-3@1x.png, img/iphone-hand-3@2x.png 2x">
+                    <source media="(min-width: 700px)" srcset="img/iphone-hand-2@1x.png, img/iphone-hand-2@2x.png 2x">
+                    <img class="intro__image-phone" src="img/iphone-hand-1.png"
+                         srcset="img/iphone-hand-1.png, img/iphone-hand-1@2x.png 2x, img/iphone-hand-1@3x.png 3x" alt="Pink">
+                </picture>
+
+                <div class="download">
+                    <div class="download__wrapper">
+                        <div class="download__button" role="button">
+                            Скачать приложение
+                        </div>
+
+                        <div class="download__mobile-icons">
+                            <div class="icon-apple">
+                                <img src="img/apple-logo.svg" alt="Возможна установка на Apple ios">
+                            </div>
+
+                            <div class="icon-android">
+                                <img src="img/android-logo.svg" alt="Возможна установка на Android">
+                            </div>
+
+                            <div class="icon-microsoft">
+                                <img src="img/microsoft-logo.svg" alt="Возможна установка на Windows mobile">
+                            </div>
+                        </div>
+
+                        <div class="download__caption">
+                            Доступно для iPhone, iPad, Android, Windows phone, Mac OS, Windows 8
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="features__wrapper">
+
+                <div class="features__title">
+                    Устали от серости мегаполиса?
+                </div>
+
+                <div class="features__title">
+                    Нам есть, что вам<br> предложить!
+                </div>
+
+                <figure class="features__figure">
+                    <div class="features__figure-left"></div>
+                </figure>
+
+                <div class="features__item-wrapper">
+                    <div class="features__items">
+                        <div class="feature__item feature__item--image1">
+                            <picture>
+                                <source media="(min-width: 320px)" srcset="img/iphone-screen-2-1@1x.png, img/iphone-screen-2-1@2x.png 2x">
+                                <source media="(min-width: 700px)" srcset="img/iphone-screen-2-1@2x.png">
+                                <img src="img/iphone-screen-2-1@1x.png" alt="Начальное изоброжение, серое и не красивое">
+                            </picture>
+
+                        </div>
+
+                        <div class="feature__item feature__item--image2">
+                            <picture>
+                                <source media="(min-width: 320px)" srcset="img/iphone-screen-2-2@1x.png, img/iphone-screen-2-2@2x.png 2x">
+                                <source media="(min-width: 700px)" srcset="img/iphone-screen-2-2@2x.png">
+                                <img src="img/iphone-screen-2-2@1x.png" alt="Обрабатываем с помощью PINK">
+                            </picture>
+
+                        </div>
+
+                        <div class="feature__item feature__item--image3">
+                            <picture>
+                                <source media="(min-width: 320px)" srcset="img/iphone-screen-2-3@1x.png 2x, img/iphone-screen-2-3@2x.png 3x">
+                                <source media="(min-width: 700px)" srcset="img/iphone-screen-2-3@1x.png, img/iphone-screen-2-3@2x.png 2x">
+                                <img src="img/screen-1-3.png" alt="Результат работы PINK">
+                            </picture>
+
+                        </div>
+
+                        <div class="feature__item">
+                            <div class="feature__item-title">Поднимает настроение</div>
+                            <div class="feature__item-caption">Приложение позволит вам победить осеннюю хандру и деперессию буквально в несколько кликов!</div>
+                        </div>
+
+                        <div class="feature__item">
+                            <div class="feature__item-title">Меняет мир вокруг
+                            </div>
+                            <div class="feature__item-caption">Сделайте снимок и украсьте его смайликом или текстовой подписью, чтобы усилить эффект</div>
+                        </div>
+
+                        <div class="feature__item">
+                            <div class="feature__item-title">Заводит новых друзей</div>
+                            <div class="feature__item-caption">Ставьте лайки, комментируте, делитесь фотографиями с друзьями и заводите новых</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="features__effect">
+                <div class="features__effect-wrapper">
+                    <div class="features__effect-timer">
+                        <picture>
+                            <source media="(min-width: 1200px)" srcset="img/timer-3.svg">
+                            <img class="features__effect-img" src="img/timer-2.svg" alt="Обрабатываем с помощью PINK">
+                        </picture>
+                        <!--<img class="features__effect-img" src="img/timer-2.svg" alt="Эффект 24 часа!">-->
+
+                        <div class="features__effect-time">24</div>
+                    </div>
+
+                    <div class="features__effect-proof">
+                        <div class="features__effect-title">Эффект <br> на 24 часа!</div>
+
+                        <div class="features__effect-caption">Британские ученые провели исследования
+                            и доказали, что положительный эффект
+                            от использования приложения длится
+                            целые сутки!
+                        </div>
+
+                        <a class="features__effect-link" href="#">Узнать больше об исследовании</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="reviews" id="reviews">
+            <div class="reviews__wrapper">
+                <div class="reviews__quotation">
+                    <img src="img/quotes.svg" alt="">
+                </div>
+
+                <div class="reviews__slider-arrows">
+                    <div class="reviews__slider-arrows--left" role="button"></div>
+                    <div class="reviews__slider-arrows--right" role="button"></div>
+                </div>
+
+                <div class="reviews__slider peppermint peppermint-inactive" id="reviews__slider">
+                    <figure class="reviews__slide">
+                        <div class="reviews__content">
+                            <div class="reviews__reviewer">Николай Петров</div>
+                            <div class="reviews__reviewer-title">25 лет, водитель трамвая</div>
+
+                            <div class="reviews__reviewer-text">«Это приложение перевернуло мой мир и позволило по-новому взглянуть на привычные серые вещи!
+                                А еще я познакомился со своей будущей женой в комментариях к выложенной фотографии!»</div>
+                        </div>
+                    </figure>
+
+                    <figure class="reviews__slide">
+                        <div class="reviews__content">
+                            <div class="reviews__reviewer">Иван Кузнецов</div>
+                            <div class="reviews__reviewer-title">19 лет, студент</div>
+
+                            <div class="reviews__reviewer-text">«Самое крутое приложение которое есть на моём смартфоне! Советую каждому попробовать!»</div>
+                        </div>
+                    </figure>
+
+                    <figure class="reviews__slide">
+                        <div class="reviews__content">
+                            <div class="reviews__reviewer">Нина Иванова</div>
+                            <div class="reviews__reviewer-title">37 лет, бухгалтер</div>
+
+                            <div class="reviews__reviewer-text">«Это приложение перевернуло мой мир и позволило по-новому взглянуть на привычные серые вещи!
+                                А еще я познакомился со своей будущей женой в комментариях к выложенной фотографии!»</div>
+                        </div>
+                    </figure>
+                </div>
+                <div class="reviews__slider-dots" id="reviews__slider-dots"></div>
+            </div>
+        </section>
+
+
+        <section class="price" id="price">
+            <div class="price__figure">
+                <figure class="price__figure--left"></figure>
+            </div>
+
+            <div class="price__wrapper--mobile">
+
+                <div class="price__mobile-slider peppermint peppermint-inactive" id="price__mobile-slider">
+                    <figure class="price__slide-1">
+                        <table class="price__table">
+                            <tr>
+                                <th>
+                                    База
+                                    <br>
+                                    <span class="price__amount">1,99 USD</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="price__param-true">
+                                    Розовоый фильтр
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="price__param-false">
+                                    Смайлики
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="price__param-false">
+                                    Комментарии
+                                </td>
+                            </tr>
+                        </table>
+                    </figure>
+
+                    <figure class="price__slide-2 price__slide--active ">
+                        <table class="price__table">
+                            <tr>
+                                <th class="price__slide--badge-hit">
+                                    Стандарт
+                                    <br>
+                                    <span class="price__amount">3,99 USD</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="price__param-true">
+                                    Розовоый фильтр
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="price__param-true">
+                                    Смайлики
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="price__param-false">
+                                    Комментарии
+                                </td>
+                            </tr>
+                        </table>
+                    </figure>
+
+                    <figure class="price__slide-3">
+                        <table class="price__table">
+                            <tr>
+                                <th>
+                                    Анлим
+                                    <br>
+                                    <span class="price__amount">9,99 USD</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="price__param-true">
+                                    Розовоый фильтр
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="price__param-true">
+                                    Смайлики
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="price__param-true">
+                                    Комментарии
+                                </td>
+                            </tr>
+                        </table>
+                    </figure>
+                </div>
+
+            </div>
+
+            <div class="price__wrapper--full">
+                <table class="price__table">
+                    <tr>
+                        <th class="price__unvisible-cell"></th>
+                        <th>
+                            База
+                            <br>
+                            <span class="price__amount">1,99 USD</span>
+                        </th>
+                        <th class="price__slide--badge-hit">
+                            Стандарт
+                            <br>
+                            <span class="price__amount">3,99 USD</span>
+                        </th>
+                        <th>
+                            Анлим
+                            <br>
+                            <span class="price__amount">9,99 USD</span>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>Розовоый фильтр</td>
+                        <td class="price__param-true"></td>
+                        <td class="price__param-true"></td>
+                        <td class="price__param-true"></td>
+                    </tr>
+                    <tr>
+                        <td>Смайлики</td>
+                        <td class="price__param-false"></td>
+                        <td class="price__param-true"></td>
+                        <td class="price__param-true"></td>
+                    </tr>
+                    <tr>
+                        <td>Комментарии</td>
+                        <td class="price__param-false"></td>
+                        <td class="price__param-false"></td>
+                        <td class="price__param-true"></td>
+                    </tr>
+
+                </table>
+            </div>
+        </section>
+
+        <section class="contacts">
+            <div class="contacts__wrapper">
+                <h2>Остались вопросы?<br>Свяжитесь с нами!</h2>
+
+                <div class="contacts__list">
+                    <div class="contacts__item">
+                        <div class="contacts__type">Звоните:</div>
+                        <a class="contacts__address" href="tel:+88001000900">8 (800) 1000 900</a>
+                    </div>
+
+                    <div class="contacts__item">
+                        <div class="contacts__type">Пишите:</div>
+                        <a class="contacts__address" href="mailto:hello@pinkapp.ru">hello@pinkapp.ru</a>
+                    </div>
+
+                    <div class="contacts__item">
+                        <div class="contacts__type">Приезжайте в гости:</div>
+                        <a class="contacts__address" href="#map__yandex">Санкт-Петербург,<br>
+                            Невский проспект, д. 20</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map">
+            <div class="map__wrapper">
+
+                <div class="map__skew">
+                    <div class="map__skew--left">
+                        <div></div>
+                    </div>
+
+                    <div class="map__skew--right">
+                        <div></div>
+                    </div>
+                </div>
+
+                <div class="map__yandex" id="map__yandex"></div>
+            </div>
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer class="page-footer">
+    <div class="page-footer__wrapper">
+        <div class="page-footer__logo">
+            <a href="#">
+                <picture>
+                    <source media="(min-width: 1200px)" srcset="img/Pink-logo-footer-3@1x.png, img/Pink-logo-footer-3@2x.png 2x">
+                    <source media="(min-width: 700px)" srcset="img/Pink-logo-footer-2@1x.png, img/Pink-logo-footer-2@2x.png 2x">
+                    <source media="(min-width: 320px)" srcset="img/Pink-logo-footer-2@2x.png 2x">
+                    <img src="img/Pink-logo-footer-2@1x.png" alt="Розовые очки нашего приложения">
+                </picture>
+            </a>
+        </div>
+
+        <div class="page-footer__socials">
+            tw
+            fb
+            yt
+        </div>
+
+        <div class="page-footer__powered">
+            <span>Website by</span>
+            <img src="" alt="">
+            <span>for</span>
+            <img src="" alt="">
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/vendor/picturefill.min.js"></script>
+<script src="js/vendor/gumshoe.min.js"></script>
+<script src="js/vendor/peppermint.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+
+<script src="js/main.js"></script>
+
+<!--<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=poB-1YNrqxtSE9gavSXqhHDg6is2kXS-&width=100%&height=100%&id=map__yandex&lang=ru_UA&sourceType=constructor&scroll=false"></script>-->
 
 </body>
 </html>

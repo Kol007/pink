@@ -1,0 +1,186 @@
+/* Peppermint required styles + default appearance styles */
+
+.peppermint.peppermint-active {
+    position: relative;
+
+    overflow: hidden;
+
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.peppermint.peppermint-active .peppermint-slides {
+    position: relative;
+
+    overflow: hidden; /* clearfix */
+
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+}
+
+.peppermint.peppermint-active .peppermint-slides > * {
+    float: left;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+
+    -webkit-tap-highlight-color: transparent;
+            tap-highlight-color: transparent;
+}
+
+.peppermint.peppermint-active .peppermint-slides a:active,
+.peppermint.peppermint-active .peppermint-slides a:active img {
+    outline: none;
+}
+
+.peppermint.peppermint-active,
+.peppermint.peppermint-active .peppermint-dots,
+.peppermint.peppermint-active .peppermint-slides,
+.peppermint.peppermint-active .peppermint-slides > * {
+    -webkit-transform: translate3d(0,0,0);
+       -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+
+.peppermint.peppermint-mouse .peppermint-slides {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor:    -moz-grab;
+    cursor:         grab;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.peppermint.peppermint-mouse.peppermint-drag .peppermint-slides * {
+    cursor: move;
+    cursor: -webkit-grabbing;
+    cursor:    -moz-grabbing;
+    cursor:         grabbing;
+}
+
+/* default appearance styles */
+.peppermint {
+    text-align: center;
+}
+
+.peppermint figure {
+    margin: 0 0 1.5em 0;
+}
+
+.peppermint figure img {
+    max-width: 100%;
+
+    vertical-align: top;
+
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+}
+
+.peppermint figure figcaption {
+    margin-top: .5em;
+
+    color: #787575;
+
+    font-size: .8em;
+    font-style: italic;
+}
+
+.peppermint.peppermint-active {
+    margin-bottom: 1.5em;
+}
+
+.peppermint-slides {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+/* dots */
+ul.peppermint-dots {
+    margin: .6em 0;
+    padding: 0;
+
+    list-style-type: none;
+
+    text-align: center;
+}
+
+.peppermint.peppermint-active ul.peppermint-dots {
+    margin: 0 0 .6em 0;
+}
+
+.peppermint.peppermint-active .peppermint-slides + ul.peppermint-dots {
+    margin: .6em 0 0 0;
+}
+
+ul.peppermint-dots > li {
+    position: relative;
+
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+    padding: .5em .6em;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    text-align: center;
+    vertical-align: middle;
+
+    -webkit-tap-highlight-color: transparent;
+    /* ie7 fallback */
+    *display: inline;
+    *zoom: 1;
+}
+
+ul.peppermint-dots > li.peppermint-mouse-clicked,
+ul.peppermint-dots > li:active {
+    outline: 0;
+}
+
+ul.peppermint-dots > li > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+    margin: -4px 0 0 -4px;
+
+    border-radius: 50%;
+    outline: none;
+    background: $blue--dark-transparent;
+}
+
+ul.peppermint-dots > li:hover > span {
+    opacity: .6;
+    background: $blue--dark;
+}
+
+ul.peppermint-dots > li:active > span {
+    opacity: .1;
+    background: $blue--dark;
+}
+
+ul.peppermint-dots > li.peppermint-active-dot > span {
+    width: 9px;
+    height: 9px;
+    margin: -5px 0 0 -4px;
+
+    border: 3px solid $blue--dark;
+    background: transparent;
+}

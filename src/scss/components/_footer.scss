@@ -1,0 +1,44 @@
+.page-footer {
+  background-color: $white;
+}
+
+.page-footer__wrapper {
+  display: none;
+
+  @media screen and (min-width: $screen-md) {
+    display: flex;
+    width: 660px;
+    height: 125px;
+
+    margin: 0 auto;
+
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    width: 960px;
+    height: 200px;
+  }
+}
+
+.page-footer__logo {
+  margin-left: 10px;
+
+  & img {
+    height: 40px;
+  }
+
+  & img:active {
+    opacity: .3;
+  }
+}
+
+.page-footer__socials {
+
+  text-align: center;
+}
+
+.page-footer__powered {
+  margin-right: 10px;
+}

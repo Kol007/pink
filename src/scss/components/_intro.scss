@@ -1,0 +1,108 @@
+.intro {
+    position: relative;
+
+    text-align: center;
+
+    background-image: url(../img/background-1@1x.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    @media all and (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+        background-image: url(../img/background-1@2x.jpg);
+    }
+
+    @media all and (min-resolution: 3dppx),
+    (min-resolution: 288dpi) {
+        background-image: url(../img/background-1@3x.jpg);
+    }
+
+    @media all and (min-width: 700px) {
+        height: 730px;
+
+        background-image: url(../img/background-2@1x.jpg);
+    }
+
+    @media all and (min-width: $screen-lg) and (min-resolution: 2dppx), (min-resolution: 192dpi) {
+        background-image: url(../img/background-2@2x.jpg);
+    }
+
+    @media all and (min-width: $screen-lg) and (min-resolution: 3dppx), (min-resolution: 288dpi) {
+        background-image: url(../img/background-2@3x.jpg);
+    }
+
+    @media all and (min-width: $screen-xl) {
+        height: 854px;
+    }
+
+    @media all and (min-width: $screen-xxl) {
+        background-image: url(../img/background-2@2x.jpg);
+    }
+}
+
+.intro__wrapper {
+    @media all and (min-width: $screen-lg) {
+        width: 960px;
+        margin: 0 auto;
+    }
+}
+
+.intro__title {
+    width: 320px;
+    margin: 0 auto;
+    padding-top: 90px;
+
+    text-align: center;
+
+    color: $white;
+
+    font-size: 2.4rem;
+    font-weight: 300;
+
+    @media all and (min-width: 700px) {
+        position: absolute;
+        z-index: $z-index-first;
+
+        width: 200px;
+        margin-left: 90px;
+        padding-top: 210px;
+
+        font-size: 40px;
+        line-height: 1.375;
+    }
+
+    @media all and (min-width: $screen-lg) {
+        width: 320px;
+        margin-left: 30px;
+
+        font-size: 50px;
+    }
+}
+
+.intro__image-phone {
+    position: relative;
+    z-index: 0;
+    bottom: -5px;
+    left: -30px;
+
+    height: 285px;
+    margin-top: 20px;
+
+    @media all and (min-width: 700px) {
+        bottom: 0;
+        left: 40px;
+
+        height: 545px;
+        margin-top: 185px;
+    }
+
+    @media all and (min-width: $screen-xl) {
+        height: 646px;
+        margin-top: 208px;
+    }
+
+    @media all and (min-width: 1440px) {
+        height: 646px;
+    }
+}

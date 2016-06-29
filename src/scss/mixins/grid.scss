@@ -1,0 +1,237 @@
+//@include container();
+//@include row();
+//@include col(xl, 4, 11, 20px);
+//<div class="container"><div class="row"><div class class="column"></div></div></div>
+
+//------------------------------------------------------------------------------
+//  Generator of the rules container
+//------------------------------------------------------------------------------
+
+@mixin container() {
+    display: block;
+
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: ($grid-gutter-width / 2);
+    padding-left: ($grid-gutter-width / 2);
+
+    @media (min-width: $screen-sm) {
+        width: $container-sm;
+    }
+
+    @media (min-width: $screen-md) {
+        width: $container-md;
+    }
+
+    @media (min-width: $screen-lg) {
+        width: $container-lg;
+    }
+
+    @media (min-width: $screen-xl) {
+        width: $container-xl;
+    }
+
+    @media (min-width: $screen-xxl) {
+        width: $container-xxl;
+    }
+}
+
+
+
+//------------------------------------------------------------------------------
+//  Генератор правил для прямого родителя модульной сетки
+//------------------------------------------------------------------------------
+//  Принимает:
+//  $xs-grid-gutter:   $grid-gutter-width - промежуток между ячейками XS-сетки
+//  $sm-grid-gutter:   $grid-gutter-width - промежуток между ячейками SM-сетки
+//  $md-grid-gutter:   $grid-gutter-width - промежуток между ячейками MD-сетки
+//  $lg-grid-gutter:   $grid-gutter-width - промежуток между ячейками LG-сетки
+//  $xl-grid-gutter:   $grid-gutter-width - промежуток между ячейками XL-сетки
+//  $xxl-grid-gutter:  $grid-gutter-width - промежуток между ячейками XXL-сетки
+//------------------------------------------------------------------------------
+//  Тестирование: http://codepen.io/nicothin/pen/NNggVx?editors=0100
+//------------------------------------------------------------------------------
+
+@mixin row($xs-grid-gutter: $grid-gutter-width, $sm-grid-gutter: $grid-gutter-width,
+    $md-grid-gutter: $grid-gutter-width, $lg-grid-gutter: $grid-gutter-width, $xl-grid-gutter: $grid-gutter-width,
+    $xxl-grid-gutter: $grid-gutter-width) {
+    display: flex;
+
+    -js-display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+        display: block;
+
+        width: 100%;
+    }
+
+    // Если первая переданная переменная не ноль — выводим margin-ы по умолчанию
+    @if ($xs-grid-gutter != 0) {
+        margin-right: ($xs-grid-gutter / -2);
+        margin-left: ($xs-grid-gutter / -2);
+    }
+
+    // Если первая переданная переменная не ноль — выводим padding-и по умолчанию для прямых потомков
+    @if ($xs-grid-gutter != 0) {
+        & > * {
+            padding-right: ($grid-gutter-width / 2);
+            padding-left: ($grid-gutter-width / 2);
+        }
+    }
+
+    @if ($sm-grid-gutter != $xs-grid-gutter) {
+        @media (min-width: $screen-sm) {
+            margin-right: ($sm-grid-gutter / -2);
+            margin-left: ($sm-grid-gutter / -2);
+        }
+    }
+
+    @if ($md-grid-gutter != $sm-grid-gutter) {
+        @media (min-width: $screen-md) {
+            margin-right: ($md-grid-gutter / -2);
+            margin-left: ($md-grid-gutter / -2);
+        }
+    }
+
+    @if ($lg-grid-gutter != $md-grid-gutter) {
+        @media (min-width: $screen-lg) {
+            margin-right: ($lg-grid-gutter / -2);
+            margin-left: ($lg-grid-gutter / -2);
+        }
+    }
+
+    @if ($xl-grid-gutter != $lg-grid-gutter) {
+        @media (min-width: $screen-xl) {
+            margin-right: ($xl-grid-gutter / -2);
+            margin-left: ($xl-grid-gutter / -2);
+        }
+    }
+
+    @if ($xxl-grid-gutter != $xl-grid-gutter) {
+        @media (min-width: $screen-xxl) {
+            margin-right: ($xxl-grid-gutter / -2);
+            margin-left: ($xxl-grid-gutter / -2);
+        }
+    }
+}
+//------------------------------------------------------------------------------
+//  function return width of the cell
+//------------------------------------------------------------------------------
+//  Принимает:
+//  $column:      1                     - ширина (кол-во колонок в этой ячейке)
+//  $columns:     $grid-columns;        - количество ячеек в ряду
+//
+
+//------------------------------------------------------------------------------
+
+@function get-width($column: 1, $columns: $grid-columns) {
+    @return 100% / $columns * $column;
+}
+
+//------------------------------------------------------------------------------
+//  Генератор правил для одной ячейки
+//------------------------------------------------------------------------------
+//  Принимает:
+//  $column:      1                     - ширина (кол-во колонок для этой ячейки)
+//  $columns:     $grid-columns;        - общее количество ячеек на 1 ряд
+//  $gutter:      $grid-gutter-width    - промежуток между ячейками (для padding-left и padding-right)
+//------------------------------------------------------------------------------
+
+@mixin make-col($column: 1, $columns: $grid-columns, $gutter: $grid-gutter-width) {
+    display: block;
+
+    width: get-width($column, $columns); // Вернёт $width с шириной в процентах
+    max-width: get-width($column, $columns);
+
+    flex: 0 0 get-width($column, $columns);
+
+    // ВНИМАНИЕ! если $gutter = false, в CSS не попадут правила padding-left и padding-right
+    @if ($gutter !=  false) {
+        padding-right: ($gutter / 2);
+        padding-left: ($gutter / 2);
+    }
+}
+//------------------------------------------------------------------------------
+//  Генератор правил для одной ячейки с возможностью указать @media
+//------------------------------------------------------------------------------
+//  Принимает:
+//  $screen:      xs                    - тип сетки [xs|sm|md|lg|xl|xxl]
+//  $column:      1                     - ширина (кол-во колонок для этой ячейки)
+//  $columns:     $grid-columns;        - общее количество ячеек на 1 ряд
+//  $gutter:      $grid-gutter-width    - промежуток между ячейками (для padding-left и padding-right)
+//------------------------------------------------------------------------------
+//  Примеры: http://codepen.io/nicothin/pen/obRMgx?editors=1100
+//------------------------------------------------------------------------------
+
+@mixin col($screen: xs, $column: 1, $columns: $grid-columns, $gutter: $grid-gutter-width) {
+    @if ($screen == xs) {
+        @include make-col($column, $columns, $gutter);
+    }
+    @if ($screen == sm) {
+        @media (min-width: $screen-sm) {
+            @include make-col($column, $columns, $gutter);
+        }
+    }
+    @if ($screen == md) {
+        @media (min-width: $screen-md) {
+            @include make-col($column, $columns, $gutter);
+        }
+    }
+    @if ($screen == lg) {
+        @media (min-width: $screen-lg) {
+            @include make-col($column, $columns, $gutter);
+        }
+    }
+    @if ($screen == xl) {
+        @media (min-width: $screen-xl) {
+            @include make-col($column, $columns, $gutter);
+        }
+    }
+    @if ($screen == xxl) {
+        @media (min-width: $screen-xxl) {
+            @include make-col($column, $columns, $gutter);
+        }
+    }
+}
+
+//------------------------------------------------------------------------------
+//  Генератор правил для отступа одной ячейки с возможностью указать @media
+//------------------------------------------------------------------------------
+//  Принимает:
+//  $screen:      xs                    - тип сетки [xs|sm|md|lg|xl|xxl]
+//  $column:      1                     - ширина отступа (кол-во колонок)
+//  $columns:     $grid-columns;        - общее количество ячеек на 1 ряд
+//------------------------------------------------------------------------------
+
+@mixin col-offset($screen: xs, $column: 1, $columns: $grid-columns) {
+    @if ($screen == xs) {
+        margin-left: ($column * 100% / $columns);
+    }
+    @if ($screen == sm) {
+        @media (min-width: $screen-sm) {
+            margin-left: ($column * 100% / $columns);
+        }
+    }
+    @if ($screen == md) {
+        @media (min-width: $screen-md) {
+            margin-left: ($column * 100% / $columns);
+        }
+    }
+    @if ($screen == lg) {
+        @media (min-width: $screen-lg) {
+            margin-left: ($column * 100% / $columns);
+        }
+    }
+    @if ($screen == xl) {
+        @media (min-width: $screen-xl) {
+            margin-left: ($column * 100% / $columns);
+        }
+    }
+    @if ($screen == xxl) {
+        @media (min-width: $screen-xxl) {
+            margin-left: ($column * 100% / $columns);
+        }
+    }
+}

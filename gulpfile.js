@@ -1,33 +1,30 @@
 'use strict';
-var gulp    = require('gulp');
+var gulp            = require('gulp');
 
-var less    = require('gulp-less');
-var gcmq     = require('gulp-group-css-media-queries');
-var csscomb = require('gulp-csscomb');
-var cleanCSS = require('gulp-clean-css');
+var sass            = require('gulp-sass');
+var gcmq            = require('gulp-group-css-media-queries');
+var csscomb         = require('gulp-csscomb');
+// var cleanCSS     = require('gulp-clean-css');
+var sourcemaps      = require('gulp-sourcemaps');
+var autoprefixer    = require('gulp-autoprefixer');
 
-var rename = require('gulp-rename');
-var newer = require('gulp-newer');
-var clean = require('gulp-clean');
-var del = require('del');
+var rename          = require('gulp-rename');
+var newer           = require('gulp-newer');
+var clean           = require('gulp-clean');
+var del             = require('del');
 
-var gutil = require('gulp-util');
-var debug = require('gulp-debug');
+var gutil           = require('gulp-util');
+var debug           = require('gulp-debug');
 
-var watch = require('gulp-watch');
+var watch           = require('gulp-watch');
 
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
+var imagemin        = require('gulp-imagemin');
+var pngquant        = require('imagemin-pngquant');
 
-var spritesmith = require('gulp.spritesmith');
-var merge = require('gulp-merge');
-var buffer = require('vinyl-buffer');
+var spritesmith     = require('gulp.spritesmith');
+// var merge = require('gulp-merge');
+// var buffer = require('vinyl-buffer');
 
-
-var LessPluginCleanCSS = require('less-plugin-clean-css'),
-    LessPluginAutoPrefix = require('less-plugin-autoprefix'),
-    cleancss = new LessPluginCleanCSS({ advanced: true }),
-    autoprefix= new LessPluginAutoPrefix({ browsers: ["last 2 versions", "ie >= 8", "> 1%"] });
 
 var path = require('path');
 
@@ -68,25 +65,30 @@ gulp.task('clean', gulp.parallel(
     'clean:doc'
 ));
 
-
-gulp.task('css:less', function () {
-    console.log('---------- LESS compile');
-    return gulp.src('./src/less/main.less')
-        .pipe(less({
-            paths: [ path.join(__dirname, 'less', 'includes') ],
-            plugins: [autoprefix]
-        }).on('error', gutil.log))
+gulp.task('css:scss', function () {
+    console.log('---------- SASS compile');
+    return gulp
+        .src('./src/scss/main.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            errLogToConsole: true,
+            outputStyle: 'expanded'
+        }).on('error', sass.logError))
         .pipe(debug({title: "csscomb:"}))
         .pipe(csscomb())
         .pipe(debug({title: "group media queries:"}))
         .pipe(gcmq())
+        .pipe(debug({title: "source map for scss:"}))
+        .pipe(sourcemaps.write(/*'./build/css/maps'*/))
+        .pipe(debug({title: "autoprefixer:"}))
+        .pipe(autoprefixer())
         .pipe(gulp.dest('./build/css'));
 });
 
 gulp.task('css:comb', function () {
-    return gulp.src('./src/less/**/*.less')
+    return gulp.src('./src/scss/**/*.scss')
         .pipe(csscomb())
-        .pipe(gulp.dest('./src/less'));
+        .pipe(gulp.dest('./src/scss'));
 });
 
 
@@ -120,9 +122,9 @@ gulp.task('img:min', function() {
 
 gulp.task('watch', function () {
     gulp.watch('src/*.+(html|txt|ico|png)', gulp.series('clean:doc', 'copy:doc') );
-    gulp.watch('src/less/**/*.less', gulp.series('clean:css', 'css:less') );
+    gulp.watch('src/scss/**/*.scss', gulp.series('clean:css', 'css:scss') );
     gulp.watch('src/img/**/*', gulp.series('clean:img', 'img:min') );
-    gulp.watch('src/js/*', gulp.series('copy:js') );
+    gulp.watch('src/js/**/*', gulp.series('copy:js') );
 });
 
 
@@ -130,8 +132,8 @@ gulp.task('make:sprite', function () {
     var spriteData = gulp.src('src/img/icon/*.png').pipe(spritesmith({
         imgName: 'sprite.png',
         imgPath: '../img/icon/sprite.png',
-        cssName: 'sprite.less',
-        cssFormat: 'less',
+        cssName: 'sprite.scss',
+        cssFormat: 'scss',
         padding:    2,
         cssVarMap: function(sprite) {
             sprite.name = 'icon-' + sprite.name
@@ -144,17 +146,18 @@ gulp.task('make:sprite', function () {
 });
 
 gulp.task('move:sprite', function () {
-    return gulp.src("src/img/icon/sprite.less")
-        .pipe(gulp.dest('src/less'));
+    return gulp.src("src/img/icon/sprite.scss")
+        .pipe(gulp.dest('src/scss'));
 });
 
 gulp.task('clean:sprite', function () {
     return del([
-        'src/less/sprite.css',
+        'src/scss/sprite.css',
         'src/img/icon/sprite.png',
-        'src/img/icon/sprite.less'
+        'src/img/icon/sprite.scss'
     ]);
 });
+
 gulp.task('sprite',
     gulp.series(
         'clean:sprite',
@@ -163,12 +166,18 @@ gulp.task('sprite',
     )
 );
 
+gulp.task('compile',
+    gulp.series(
+      'clean',
+      gulp.parallel('css:scss', 'copy', 'img:min')
+    )
+);
 
 gulp.task('default',
     gulp.series(
-        'clean',
-        'sprite',
-        gulp.parallel('css:less', 'copy', 'img:min'),
+        // 'clean',
+        // 'sprite',
+        // gulp.parallel('css:scss', 'copy', 'img:min'),
         gulp.parallel('watch')
     )
 );

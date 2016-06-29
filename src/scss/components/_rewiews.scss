@@ -1,0 +1,142 @@
+
+
+.reviews__wrapper {
+    min-width: 320px;
+    max-width: 660px;
+    margin: 0 auto;
+}
+
+.reviews__quotation {
+    display: none;
+
+    @media all and (min-width: $screen-xl) {
+        display: block;
+
+        width: 80px;
+        margin: 0 auto;
+        padding-top: 70px;
+        padding-bottom: 50px;
+
+        opacity: .1;
+    }
+}
+
+.reviews__slider-arrows {
+    position: relative;
+
+    display: none;
+
+    .reviews__slider-arrows--left,
+    .reviews__slider-arrows--right {
+        position: absolute;
+
+        width: 20px;
+        height: 20px;
+
+        border-top-width: 2px;
+        border-top-style: solid;
+        border-top-color: $blue--dark-transparent;
+        border-right-width: 2px;
+        border-right-style: solid;
+        border-right-color: $blue--dark-transparent;
+    }
+
+    .reviews__slider-arrows--left:hover,
+    .reviews__slider-arrows--right:hover {
+        opacity: .6;
+        border-top-color: $blue--dark;
+        border-right-color: $blue--dark;
+    }
+
+    .reviews__slider-arrows--left:active,
+    .reviews__slider-arrows--right:active {
+        opacity: .1;
+    }
+
+    .reviews__slider-arrows--left {
+        top: 50px;
+        left: -15%;
+
+        transform: rotate(225deg);
+    }
+
+    .reviews__slider-arrows--right {
+        top: 48px;
+        right: -15%;
+
+        transform: rotate(45deg);
+    }
+
+    @media all and (min-width: $screen-xl) {
+        display: block;
+    }
+}
+
+.reviews__content {
+    display: flex;
+    flex-direction: column;
+
+    -js-display: flex;
+}
+
+.reviews__reviewer {
+    padding-bottom: 25px;
+
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 3.0rem;
+
+    @media all and (min-width: $screen-md) {
+        padding-top: 35px;
+        padding-bottom: 15px;
+
+        font-size: 2.0rem;
+
+        order: 2;
+    }
+
+    @media all and (min-width: $screen-xl) {
+        font-size: 2.4rem;
+    }
+}
+
+.reviews__reviewer-title {
+    display: none;
+
+    color: $blue--dark;
+
+
+    @media all and (min-width: $screen-md) {
+        display: block;
+
+        font-size: 1.4rem;
+        line-height: 3.0rem;
+
+        order: 3;
+    }
+
+    @media all and (min-width: $screen-xl) {
+        font-size: 1.8rem;
+    }
+}
+
+.reviews__reviewer-text {
+    color: $blue--dark;
+
+    font-size: 1.4rem;
+    line-height: 3.0rem;
+
+    @media all and (min-width: $screen-md) {
+        font-size: 1.8rem;
+    }
+
+    @media all and (min-width: $screen-xl) {
+    }
+}
+
+// slider
+.reviews__slider-dots {
+    @media all and (min-width: $screen-xl) {
+        display: none;
+    }
+}
