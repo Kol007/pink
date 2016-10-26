@@ -4,7 +4,7 @@ var gulp            = require('gulp');
 var sass            = require('gulp-sass');
 var gcmq            = require('gulp-group-css-media-queries');
 var csscomb         = require('gulp-csscomb');
-// var cleanCSS     = require('gulp-clean-css');
+var cleancss        = require('gulp-clean-css');
 var sourcemaps      = require('gulp-sourcemaps');
 var autoprefixer    = require('gulp-autoprefixer');
 
@@ -59,64 +59,69 @@ gulp.task('clean:doc', function () {
 });
 
 gulp.task('clean', gulp.parallel(
-    'clean:css',
-    'clean:img',
-    'clean:js',
-    'clean:doc'
+  'clean:css',
+  'clean:img',
+  'clean:js',
+  'clean:doc'
 ));
 
 gulp.task('css:scss', function () {
     console.log('---------- SASS compile');
     return gulp
-        .src('./src/scss/main.scss')
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            errLogToConsole: true,
-            outputStyle: 'expanded'
-        }).on('error', sass.logError))
+      .src('./src/scss/main.scss')
+      .pipe(sourcemaps.init())
+
+      .pipe(sass({
+          errLogToConsole: true,
+          outputStyle: 'expanded'
+      }).on('error', sass.logError))
         .pipe(debug({title: "csscomb:"}))
         .pipe(csscomb())
         .pipe(debug({title: "group media queries:"}))
         .pipe(gcmq())
-        .pipe(debug({title: "source map for scss:"}))
-        .pipe(sourcemaps.write(/*'./build/css/maps'*/))
         .pipe(debug({title: "autoprefixer:"}))
         .pipe(autoprefixer())
-        .pipe(gulp.dest('./build/css'));
+        .pipe(cleancss())
+        .pipe(debug({title: "cleenCss:"}))
+        .pipe( postcss([ require('postcss-flexibility') ]) )
+        .pipe(rename({suffix: '.min'}))
+      .pipe(debug({title: "source map for scss:"}))
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./build/css'));
 });
 
 gulp.task('css:comb', function () {
     return gulp.src('./src/scss/**/*.scss')
-        .pipe(csscomb())
-        .pipe(gulp.dest('./src/scss'));
+      .pipe(csscomb())
+      .pipe(gulp.dest('./src/scss'));
 });
 
 
 
 gulp.task('copy:doc', function() {
     return gulp.src('src/*.+(html|txt|ico|png)')
-        .pipe(gulp.dest('./build'))
+      .pipe(gulp.dest('./build'))
 } );
 
 gulp.task('copy:js', function() {
     return gulp.src('src/js/**/*.js')
-        .pipe(gulp.dest('./build/js'))
+      .pipe(gulp.dest('./build/js'))
 } );
 
 gulp.task('copy', gulp.parallel(
-    'copy:doc',
-    'copy:js'
+  'copy:doc',
+  'copy:js'
 ));
 
 gulp.task('img:min', function() {
     return gulp.src('src/img/**/*')
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
-        }))
-        .pipe(debug({title: "compress IMG:"}))
-        .pipe(gulp.dest('build/img'));
+      .pipe(imagemin({
+          progressive: true,
+          svgoPlugins: [{removeViewBox: false}],
+          use: [pngquant()]
+      }))
+      .pipe(debug({title: "compress IMG:"}))
+      .pipe(gulp.dest('build/img'));
 });
 
 
@@ -141,13 +146,13 @@ gulp.task('make:sprite', function () {
     }));
 
     return spriteData
-        .pipe(debug({title: "Make Sprite img:"}))
-        .pipe(gulp.dest('src/img/icon/'));
+      .pipe(debug({title: "Make Sprite img:"}))
+      .pipe(gulp.dest('src/img/icon/'));
 });
 
 gulp.task('move:sprite', function () {
     return gulp.src("src/img/icon/sprite.scss")
-        .pipe(gulp.dest('src/scss'));
+      .pipe(gulp.dest('src/scss'));
 });
 
 gulp.task('clean:sprite', function () {
@@ -159,25 +164,25 @@ gulp.task('clean:sprite', function () {
 });
 
 gulp.task('sprite',
-    gulp.series(
-        'clean:sprite',
-        'make:sprite',
-        'move:sprite'
-    )
+  gulp.series(
+    'clean:sprite',
+    'make:sprite',
+    'move:sprite'
+  )
 );
 
 gulp.task('compile',
-    gulp.series(
-      'clean',
-      gulp.parallel('css:scss', 'copy', 'img:min')
-    )
+  gulp.series(
+    'clean',
+    gulp.parallel('css:scss', 'copy', 'img:min')
+  )
 );
 
 gulp.task('default',
-    gulp.series(
-        // 'clean',
-        // 'sprite',
-        // gulp.parallel('css:scss', 'copy', 'img:min'),
-        gulp.parallel('watch')
-    )
+  gulp.series(
+    // 'clean',
+    // 'sprite',
+    // gulp.parallel('css:scss', 'copy', 'img:min'),
+    gulp.parallel('watch')
+  )
 );

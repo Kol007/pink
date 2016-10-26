@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="719d2ea3-38b1-48a6-894c-4a205f076904" name="dev-test-pink" url="https://kol007.makeevka.com">
+        <fileTransfer host="kol007.makeevka.com" port="1322" rootFolder="/home/nikita" accessType="SFTP" password="dfcfdfccdf9cdf99df93dfc8df9adf9f" username="nikita">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="1322" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

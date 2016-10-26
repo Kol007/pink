@@ -2,22 +2,23 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Pink</title>
 
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.min.css">
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <!--[if lt IE 9]>
+    <!--[if lte IE 9]>
     <script src="js/vendor/html5shiv.js"></script>
-    <script src="js/vendor/flexibility.js"></script>
     <![endif]-->
 
 </head>
 <body>
 
-
-<!--<header class="page-header page-header&#45;&#45;page-menu-opened">-->
-<header class="page-header">
+<!--<header class="page-header page-header page-menu-opened">-->
+<!--<header class="page-header  page-header--menu-opened">-->
+<header class="page-header  page-header--menu-opened">
     <div class="page-header__container">
         <div class="page-header__wrapper">
 
@@ -33,7 +34,7 @@
                 <div class="page-menu__burger"></div>
             </div>
 
-            <nav class="page-menu" role="navigation" data-gumshoe-header>
+            <nav class="page-menu" data-gumshoe-header>
                 <ul class="page-menu__list" data-gumshoe>
                     <li class="page-menu__item">
                         <a class="page-menu__link" data-scroll href="#info" >Информация</a>
@@ -51,7 +52,6 @@
                         <a class="page-menu__link" data-scroll href="#price">Стоимость</a>
                     </li>
                 </ul>
-
             </nav>
 
         </div>
@@ -168,26 +168,28 @@
 
             <section class="features__effect">
                 <div class="features__effect-wrapper">
-                    <div class="features__effect-timer">
-                        <picture>
-                            <source media="(min-width: 1200px)" srcset="img/timer-3.svg">
-                            <img class="features__effect-img" src="img/timer-2.svg" alt="Обрабатываем с помощью PINK">
-                        </picture>
-                        <!--<img class="features__effect-img" src="img/timer-2.svg" alt="Эффект 24 часа!">-->
+                    <div class="features__effect-grid">
+                        <div class="features__effect-timer">
+                            <picture>
+                                <source media="(min-width: 1200px)" srcset="img/timer-3.svg">
+                                <img class="features__effect-img" src="img/timer-2.svg" alt="Обрабатываем с помощью PINK">
+                            </picture>
+                            <!--<img class="features__effect-img" src="img/timer-2.svg" alt="Эффект 24 часа!">-->
 
-                        <div class="features__effect-time">24</div>
-                    </div>
-
-                    <div class="features__effect-proof">
-                        <div class="features__effect-title">Эффект <br> на 24 часа!</div>
-
-                        <div class="features__effect-caption">Британские ученые провели исследования
-                            и доказали, что положительный эффект
-                            от использования приложения длится
-                            целые сутки!
+                            <div class="features__effect-time">24</div>
                         </div>
 
-                        <a class="features__effect-link" href="#">Узнать больше об исследовании</a>
+                        <div class="features__effect-proof">
+                            <div class="features__effect-title">Эффект <br> на 24 часа!</div>
+
+                            <div class="features__effect-caption">Британские ученые провели исследования
+                                и доказали, что положительный эффект
+                                от использования приложения длится
+                                целые сутки!
+                            </div>
+
+                            <a class="features__effect-link" href="#">Узнать больше об исследовании</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -435,29 +437,65 @@
         </div>
 
         <div class="page-footer__socials">
-            tw
-            fb
-            yt
+
+            <a class="page-footer__socials-item" href="#">
+                <svg class="socials-twitter">
+                    <use xlink:href="img/icon_sprite.svg#socials-twitter" data-img="img/cart.png"></use>
+                </svg>
+            </a>
+
+
+            <a class="page-footer__socials-item" href="#">
+                <svg class="socials-fb">
+                    <use xlink:href="img/icon_sprite.svg#socials-fb" data-img="img/cart.png"></use>
+                </svg>
+            </a>
+
+            <a class="page-footer__socials-item" href="#">
+                <svg class="socials-youtube">
+                    <use xlink:href="img/icon_sprite.svg#socials-youtube" data-img="img/cart.png"></use>
+                </svg>
+            </a>
+
         </div>
 
         <div class="page-footer__powered">
             <span>Website by</span>
-            <img src="" alt="">
+
+            <a href="#">
+                <svg class="html-academy">
+                    <use xlink:href="img/icon_sprite.svg#html-academy" data-img="img/cart.png"></use>
+                </svg>
+            </a>
+
+
             <span>for</span>
-            <img src="" alt="">
+
+            <a href="#">
+                <svg class="for">
+                    <use xlink:href="img/icon_sprite.svg#for" data-img="img/cart.png"></use>
+                </svg>
+            </a>
         </div>
     </div>
 </footer>
 
+<script src="js/vendor/gumshoe.min.js" defer></script>
+<script src="js/vendor/peppermint.min.js" defer></script>
 
-<script src="js/vendor/picturefill.min.js"></script>
-<script src="js/vendor/gumshoe.min.js"></script>
-<script src="js/vendor/peppermint.min.js"></script>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+<script src="js/vendor/picturefill.min.js" defer></script>
+<script src="js/vendor/svg4everybody.min.js" defer></script>
 
-<script src="js/main.js"></script>
+<!--[if lte IE 9]>
+<script src="js/vendor/flexibility.min.js"></script>
+<script src="js/vendor/respond.min.js"></script>
+<![endif]-->
 
-<!--<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=poB-1YNrqxtSE9gavSXqhHDg6is2kXS-&width=100%&height=100%&id=map__yandex&lang=ru_UA&sourceType=constructor&scroll=false"></script>-->
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" defer></script>
+
+<script src="js/main.js" defer></script>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
 </body>
 </html>

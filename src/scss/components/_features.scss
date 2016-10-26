@@ -35,7 +35,7 @@
 
 .features__figure {
     position: absolute;
-    top: 212px;
+    top: 21.2rem;
 
     overflow: hidden;
 
@@ -44,13 +44,13 @@
     margin: 0;
 
     @media all and (min-width: 700px) {
-        top: 190px;
+        top: 19.0rem;
 
         height: 54px;
     }
 
     @media all and (min-width: $screen-xl) {
-        top: 265px;
+        top: 26.5rem;
 
         height: 92px;
     }
@@ -90,7 +90,7 @@
     background-color: $gray-light;
 
     @media all and (min-width: $screen-xl) {
-        height: 485px;
+        height: 48.5rem;
     }
 }
 
@@ -106,10 +106,8 @@
 
     text-align: center;
 
-    -js-display: flex;
-
     @media all and (min-width: 700px) {
-        width: 660px;
+        width: $container-md;
         padding-top: 25px;
 
         align-items: flex-end;
@@ -121,7 +119,7 @@
 
         flex-direction: row;
 
-        width: 960px;
+        width: $container-xl;
 
         flex-wrap: wrap;
     }
@@ -210,7 +208,7 @@
     font-weight: bold;
     line-height: 2.4rem;
 
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         font-size: 3rem;
         line-height: 3rem;
     }
@@ -222,26 +220,17 @@
     font-size: 1.4rem;
     line-height: 2.4rem;
 
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         font-size: 1.4rem;
     }
 }
 ///////// Features effect element
-//@include container();
-//@include row();
-//@include col(xl, 4,11,20px);
 
 .features__effect {
     display: none;
 
     @media all and (min-width: $screen-md) {
-        @include container();
-
-        padding-top: 55px;
-        padding-bottom: 65px;
-
-        &.features__effect {
-        }
+        display: block;
     }
 
     @media all and (min-width: $screen-xl) {
@@ -252,24 +241,33 @@
 }
 
 .features__effect-wrapper {
+    @include container();
+
+    @media all and (min-width: $screen-md) {
+        padding-top: 55px;
+        padding-bottom: 65px;
+    }
+}
+
+.features__effect-grid {
     @include row();
 
     position: relative;
 
     @media all and (min-width: $screen-md) {
-        width: 660px;
+        width: $container-md;
         margin: 0 auto;
     }
 
-    @media all and (min-width: $screen-lg) {
-        width: 960px;
+    @media all and (min-width: $screen-xl) {
+        width: $container-xl;
     }
 }
 
 .features__effect-timer {
     @include col(md, 4, 8, 20px);
 
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         @include col(xl, 4, 12, 20px);
     }
 }
@@ -313,7 +311,7 @@
 
     padding-top: 45px;
 
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         @include col(xl, 8, 12, 20px);
 
         padding-right: 50px;

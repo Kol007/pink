@@ -1,4 +1,25 @@
+'use strict';
+
 function ready() {
+  svg4everybody();
+
+  var header          = document.querySelector('.page-header');
+  var menuOpenButton  = document.querySelector('.page-menu__burger-wrapper');
+  var menuItems       = document.querySelectorAll('.page-menu__link');
+
+  menuOpenButton.addEventListener('click', function( event ) {
+    toggleMobileMenu();
+  });
+
+  [].forEach.call( menuItems, function(el) {
+    console.log(el);
+    el.addEventListener('click', function( event ) {
+      toggleMobileMenu();
+    });
+  } );
+
+  toggleMobileMenu();
+
   var sliderReviews = Peppermint(document.getElementById('reviews__slider') , {
     dots: true,
     slideshow: false,
@@ -91,6 +112,13 @@ function ready() {
     );
     yandexMap.geoObjects.add(circlePlacemark);
   }
+
+
+  function toggleMobileMenu() {
+    console.log(header);
+    header.classList.toggle('page-header--menu-opened');
+  }
 }
 
 document.addEventListener("DOMContentLoaded", ready);
+

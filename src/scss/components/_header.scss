@@ -10,19 +10,20 @@
     background-color: $black-transp;
     box-shadow: $shadow--mobile-menu;
 
-    @media all and (max-width: $screen-lg) {
-        &.page-header--page-menu-opened {
+    @media all and (max-width: $screen-xl) {
+        &.page-header--menu-opened {
             background-color: $blue--dark;
         }
     }
 
-    @media all and (min-width: 700px) {
+    @media all and (min-width: $screen-md) {
         min-height: 110px;
     }
 }
 
 .page-header__container {
     @include container();
+    //width: 100% !important;
 }
 
 .page-header__wrapper {
@@ -38,11 +39,11 @@
         opacity: .3;
     }
 
-    @media all and (min-width: 700px) {
+    @media all and (min-width: $screen-md) {
         margin-top: 27px;
     }
 
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         @include col(md, 3, 12);
     }
 }
@@ -51,7 +52,9 @@
     width: 100%;
     padding: 0;
 
-    @media all and (min-width: $screen-lg) {
+    transition: .3s $transition-time;
+
+    @media all and (min-width: $screen-xl) {
         @include col(md, 9, 12);
     }
 }
@@ -60,36 +63,27 @@
     position: relative;
 
     display: none;
+    flex-wrap: wrap;
 
     margin: 16px 0 0 0;
     padding: 0;
 
     list-style: none;
-
     text-align: center;
-
     background-color: $blue--dark;
 
-    flex-wrap: wrap;
-
-    //transition: all .8s;
-
-
-    .page-header--page-menu-opened & {
+    .page-header--menu-opened & {
         display: flex;
-
-        -js-display: flex;
     }
 
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         display: flex;
 
         margin: 0;
 
         background-color: transparent;
 
-        -js-display: flex;
-        flex-flow: row wrap;
+        flex-flow: row nowrap;
         justify-content: flex-end;
     }
 }

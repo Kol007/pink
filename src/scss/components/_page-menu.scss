@@ -9,15 +9,12 @@
 
     // White underline with animation
 
-
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         width: auto;
         padding-top: 48px;
         padding-bottom: 45px;
 
         box-shadow: none;
-
-
 
         &:not(:first-child) {
             margin-left: 50px;
@@ -38,6 +35,7 @@
 
     font-size: 1.8rem;
     line-height: 3.2rem;
+    font-weight: bold;
 
     &::after {
         position: absolute;
@@ -51,9 +49,10 @@
 
         background-color: $white;
     }
+
     .page-menu__item--active &::after,
     &:hover::after {
-        width: 100px;
+        width: 100%;
         height: 2px;
     }
 
@@ -75,7 +74,7 @@
         opacity: .3;
     }
 
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         width: auto;
         height: auto;
 
@@ -111,11 +110,11 @@
 
     cursor: pointer;
 
-    @media all and (min-width: 700px) {
+    @media all and (min-width: $screen-md) {
         margin-top: 40px;
     }
 
-    @media all and (min-width: $screen-lg) {
+    @media all and (min-width: $screen-xl) {
         display: none;
     }
 }
@@ -180,36 +179,42 @@
     }
 
     //// Menu opened
-    .page-header--page-menu-opened &::before,
-    .page-header--page-menu-opened &::after {
+    .page-header--menu-opened &::before,
+    .page-header--menu-opened &::after {
         left: 30px;
 
         width: 20px;
     }
 
-    .page-header--page-menu-opened &::before {
+    .page-header--menu-opened &::before {
         transform: rotate(-45deg);
     }
 
-    .page-header--page-menu-opened &::after {
+    .page-header--menu-opened &::after {
         top: -10px;
 
         transform: rotate(45deg);
     }
 
-    .page-header--page-menu-opened & {
+    .page-header--menu-opened & {
         top: 10px;
 
         width: 0;
         height: 0;
+        padding-right: 20px;
+
     }
 
-    @media all and (min-width: 700px) {
-        .page-header--page-menu-opened &::before {
+    @media all and (min-width: $screen-md) {
+        .page-header--menu-opened & {
+            padding-right: 40px;
+        }
+
+        .page-header--menu-opened &::before {
             top: 0;
         }
 
-        .page-header--page-menu-opened &::after {
+        .page-header--menu-opened &::after {
             top: 0;
         }
     }
